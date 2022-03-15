@@ -17,7 +17,7 @@ func NewMatchCalculator(finder parser.Finder, input io.Reader, output io.Writer)
 	return &MatchCalculator{finder: finder, input: input, output: output}
 }
 
-func (m *MatchCalculator) Calculate(specification *parser.Specification, numberOfWorkers uint) int {
+func (m *MatchCalculator) Calculate(specification *parser.Specification, numberOfWorkers int) int {
 	var total int
 
 	workerPool := concurrency.NewWorkerPool(numberOfWorkers)

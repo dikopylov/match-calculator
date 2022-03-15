@@ -9,7 +9,7 @@ Each such URL must be requested, each file must be read, and the number of occur
 
 
 ```
-$ echo -e 'https://golang.org\nhttps://golang.org\nhttps://golang.org' | go run main.go -type url
+$ echo -e 'https://golang.org\nhttps://golang.org\nhttps://golang.org\nhttps://golang.org\nhttps://golang.org\nhttps://golang.org\nhttps://golang.org' | go run main.go -type url
 Count for https://golang.org: 376
 Count for https://golang.org: 376
 Count for https://golang.org: 376

@@ -30,10 +30,10 @@ type WorkerPool struct {
 	processingResult ProcessingResult
 }
 
-func NewWorkerPool(count uint) Pool {
-	numberOfWorker := int(count)
+func NewWorkerPool(count int) Pool {
+	numberOfWorker := count
 
-	if numberOfWorker == 0 {
+	if numberOfWorker < 1 {
 		numberOfWorker = 1
 	}
 
