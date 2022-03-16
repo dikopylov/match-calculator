@@ -26,6 +26,10 @@ Total: 0
 Each data sources must be starts process immediately after read and parallel with process next. Data sources must be parrallel, but no more k=5 simultaneously.
 Need to avoid global variable and only use the standard libraries. The code must be testable.
 
+Run tests:
+```shell
+go test -v ./...
+```
 
 ## Описание
 
@@ -49,3 +53,8 @@ Total: 0
 
 Каждый источник данных должен начать обрабатываться сразу после вычитывания и параллельно с вычитыванием следующего. Источники должны обрабатываться параллельно, но не более k=5 одновременно. Обработчики данных не должны порождать лишних горутин, т.е. если k=1000 а обрабатываемых источников нет, не должно создаваться 1000 горутин.
 Нужно обойтись без глобальных переменных и использовать только стандартные библиотеки. Код должен быть написан так, чтобы его можно было легко тестировать.
+
+Запуск тестов:
+```shell
+go test -v ./...
+```
