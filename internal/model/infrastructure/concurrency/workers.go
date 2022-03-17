@@ -26,7 +26,6 @@ type WorkerPool struct {
 	count            int
 	queue            chan Job
 	results          chan *infrastructure.Result
-	done             chan struct{}
 	processingResult ProcessingResult
 }
 
@@ -41,7 +40,6 @@ func NewWorkerPool(count int) Pool {
 		count:            numberOfWorker,
 		queue:            make(chan Job, numberOfWorker),
 		results:          make(chan *infrastructure.Result, numberOfWorker),
-		done:             make(chan struct{}),
 		processingResult: defaultProcessResult(),
 	}
 }
@@ -59,7 +57,6 @@ func (w *WorkerPool) Run() {
 	}
 
 	wg.Wait()
-	close(w.done)
 	close(w.results)
 }
 
@@ -86,14 +83,10 @@ func (w *WorkerPool) Wait() {
 		select {
 		case result, ok := <-w.results:
 			if !ok {
-				continue
+				return
 			}
 
 			w.processingResult(result)
-
-		case <-w.done:
-			return
-
 		}
 	}
 }
